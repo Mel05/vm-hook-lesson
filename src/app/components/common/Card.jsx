@@ -1,6 +1,6 @@
 import React from "react";
-
 import PropTypes from "prop-types";
+
 const CardWrapper = ({ children }) => {
     return (
         <div className="card my-2">

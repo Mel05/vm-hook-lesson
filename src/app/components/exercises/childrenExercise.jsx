@@ -1,21 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import CollapseWrapper from "../common/collapse";
 import PropTypes from "prop-types";
 
 const FormComponent = ({ children }) => {
-    const [data, setData] = useState({});
-
-    console.log(data, setData);
-
-    React.Children.map(children, (child, index) => {
-        return (
-            <>
-                {index + 1} {child}
-            </>
-        );
+    return React.Children.map(children, (child) => {
+        return <li>{React.cloneElement(child)}</li>;
     });
-
-    console.log("children", children);
 };
 
 FormComponent.propTypes = {
@@ -35,10 +25,13 @@ const ChildrenExercise = () => {
                 <code>React.Children.map</code> так и
                 <code>React.Children.toArray</code>
             </p>
-
-            <Component name="email" label="email" />
-            <Component name="2" />
-            <Component name="3" />
+            <ol>
+                <FormComponent>
+                    <Component />
+                    <Component />
+                    <Component />
+                </FormComponent>
+            </ol>
         </CollapseWrapper>
     );
 };

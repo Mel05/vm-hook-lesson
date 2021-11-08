@@ -2,11 +2,11 @@ import React from "react";
 import CollapseWrapper from "../common/collapse";
 import SimpleComponent from "./simpleComponent";
 import CardWrapper from "../common/Card";
-import withAuth from "./withAuth";
+// import withAuth from "./withAuth";
 import withOnLogin from "./witnOnLogin";
 
 const HocExercise = () => {
-    const ComponentWithAuth = withAuth(SimpleComponent);
+    // const ComponentWithAuth = withAuth(SimpleComponent);
     const ComponentWithOnLogin = withOnLogin(SimpleComponent);
     return (
         <CollapseWrapper title="Упражнение">
@@ -55,8 +55,8 @@ const HocExercise = () => {
             </ul>
 
             <CardWrapper>
-                <SimpleComponent name="Simple Вася" />
-                <ComponentWithAuth />
+                {/* <SimpleComponent name="Simple Вася" />
+                <ComponentWithAuth /> */}
                 <ComponentWithOnLogin />
             </CardWrapper>
         </CollapseWrapper>

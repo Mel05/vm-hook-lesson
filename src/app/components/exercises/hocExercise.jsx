@@ -3,12 +3,9 @@ import CollapseWrapper from "../common/collapse";
 import SimpleComponent from "./simpleComponent";
 import CardWrapper from "../common/Card";
 import withAuth from "./withAuth";
-import withOnLogin from "./witnOnLogin";
 
 const HocExercise = () => {
-    const ComponentWithOnLogin = withOnLogin(SimpleComponent);
-    // const ComponentWithAuth = withAuth(SimpleComponent);
-    const ComponentWithAuthWithOnLogin = withAuth(ComponentWithOnLogin);
+    const ComponentWithAuth = withAuth(SimpleComponent);
 
     return (
         <CollapseWrapper title="Упражнение">
@@ -57,7 +54,7 @@ const HocExercise = () => {
             </ul>
 
             <CardWrapper>
-                <ComponentWithAuthWithOnLogin />
+                <ComponentWithAuth />
             </CardWrapper>
         </CollapseWrapper>
     );

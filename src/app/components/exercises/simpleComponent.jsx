@@ -1,21 +1,24 @@
 import React from "react";
-
 import PropTypes from "prop-types";
 import Subtitle from "../common/typografy/subtitle";
 
-const SimpleComponent = ({ name, onChange, onLogin }) => {
+const SimpleComponent = ({ onLogin, onLogOut, isAuth, value }) => {
     return (
         <>
-            <Subtitle>{name || "SimpleComponent"}</Subtitle>
-            <button className="btn btn-primary" onClick={onChange}>
-                {onLogin}
+            <Subtitle>{isAuth ? value : "SimpleComponent"}</Subtitle>
+            <button
+                onClick={isAuth ? onLogOut : onLogin}
+                className={`btn btn-${isAuth ? "danger" : "primary"}`}
+            >
+                {isAuth ? "Выйти из системы" : "Войти"}
             </button>
         </>
     );
 };
 SimpleComponent.propTypes = {
-    name: PropTypes.string,
-    onLogin: PropTypes.string,
-    onChange: PropTypes.func.isRequired
+    onLogin: PropTypes.func,
+    onLogOut: PropTypes.func,
+    value: PropTypes.string,
+    isAuth: PropTypes.bool
 };
 export default SimpleComponent;

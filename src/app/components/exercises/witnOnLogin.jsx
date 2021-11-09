@@ -1,13 +1,23 @@
 import React from "react";
 
 const withOnLogin = (SimpleComponent) => (props) => {
-    const onLogin = true;
+    let onLogin = "Войти";
+    console.log(props);
+
     const handleChange = () => {
-        const onLogOut = !onLogin;
-        console.log(onLogOut);
+        const onLogOut = "Выйти";
+        if (onLogin === "Войти") {
+            onLogin = onLogOut;
+        } else if (onLogin === "Выйти") {
+            onLogin = "Войти";
+        }
+        console.log(onLogin);
+        return onLogin;
     };
 
-    return <SimpleComponent {...props} onChange={handleChange} />;
+    return (
+        <SimpleComponent {...props} onChange={handleChange} onLogin={onLogin} />
+    );
 };
 
 export default withOnLogin;

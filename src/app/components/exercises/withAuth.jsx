@@ -1,14 +1,21 @@
 import React from "react";
 import SmallTitle from "../common/typografy/smallTitle";
 
-const withAuth = (Component) => (props) => {
+const withAuth = (SimpleComponent) => (props) => {
     const isLogin = localStorage.getItem("auth");
+    console.log(isLogin);
     return (
         <>
             {isLogin ? (
-                <Component {...props} />
+                <>
+                    <SmallTitle> Дратути </SmallTitle>
+                    <SimpleComponent {...props} isLogin={isLogin} />
+                </>
             ) : (
-                <SmallTitle> Auth </SmallTitle>
+                <>
+                    <SmallTitle> Авторизуйтесь </SmallTitle>
+                    <SimpleComponent {...props} isLogin={isLogin} />
+                </>
             )}
         </>
     );
